@@ -1,0 +1,77 @@
+.dash-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dash-sidebar {
+  width: 260px;
+  background-color: #1e293b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.dash-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.dash-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #94a3b8;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.nav-item.active, .nav-item:hover {
+  background-color: #12C1A5; /* ACHDA Teal */
+  color: white;
+}
+
+.dash-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-header {
+  height: 70px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}

@@ -1,0 +1,338 @@
+/* ================================================================
+   1. GLOBAL RESETS & ROOT FIXES
+   ================================================================ */
+:root {
+  --primary-teal: #12C1A5;
+  --dark-teal: #0A7263;
+  --error-red: #ef4444;
+  --slate-800: #1e293b;
+  --slate-500: #64748b;
+  --slate-200: #e2e8f0;
+  --bg-light: #f8fafc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-light) !important;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  overflow: hidden; 
+}
+
+/* ================================================================
+   2. PAGE WRAPPER & MASTER CONTAINER
+   ================================================================ */
+.auth-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+}
+
+.auth-master-container {
+  display: flex;
+  width: 95%;
+  max-width: 800px; 
+  height: 520px;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--slate-200);
+}
+
+/* ================================================================
+   3. LEFT COLUMN: HERO SIDE
+   ================================================================ */
+.auth-hero-side {
+  flex: 1.1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+.auth-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(18, 193, 165, 0.9) 0%, rgba(10, 114, 99, 0.95) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 35px;
+}
+
+.auth-hero-text-box {
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 15px;
+}
+
+.auth-hero-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.auth-hero-description {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* ================================================================
+   4. RIGHT COLUMN: FORM SIDE
+   ================================================================ */
+.auth-form-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 30px; 
+}
+
+.auth-content-limiter {
+  width: 100%;
+  max-width: 320px;
+}
+
+.auth-brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.auth-logo-box {
+  width: 42px;
+  height: 42px;
+  background-color: var(--primary-teal);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.auth-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.auth-brand-main {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--slate-800);
+  display: block;
+}
+
+.auth-brand-sub {
+  font-size: 0.75rem;
+  color: var(--slate-500);
+}
+
+.auth-welcome h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  margin-bottom: 2px;
+}
+
+.auth-welcome p {
+  font-size: 0.8rem;
+  color: var(--slate-500);
+  margin-bottom: 20px;
+}
+
+/* ================================================================
+   5. INPUT GROUPS & VALIDATION
+   ================================================================ */
+.auth-input-group {
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.auth-input-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #334155;
+}
+
+/* Updated shared background styling for Email and Password */
+.auth-input-group input, 
+.password-relative input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--slate-200);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  background-color: #f8fafc !important; /* Unified background color */
+  color: var(--slate-800);
+}
+
+.auth-input-group input:focus,
+.password-relative input:focus {
+  outline: none;
+  border-color: var(--primary-teal);
+  background-color: #ffffff !important; /* Both switch to white on focus */
+  box-shadow: 0 0 0 3px rgba(18, 193, 165, 0.1);
+}
+
+.password-relative {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-relative input {
+  padding-right: 40px; 
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--slate-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.eye-toggle:hover {
+  color: var(--primary-teal);
+}
+
+/* Validation State Classes */
+.input-error {
+  border-color: var(--error-red) !important;
+  background-color: #fffafb !important;
+}
+
+.error-text {
+  color: var(--error-red);
+  font-size: 0.7rem;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ================================================================
+   6. CHECKBOX & BUTTONS
+   ================================================================ */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 0.8rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--slate-500);
+  cursor: pointer;
+}
+
+.remember-me input {
+  accent-color: var(--primary-teal);
+}
+
+.login-options a {
+  color: var(--primary-teal);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  background: var(--primary-teal);
+  color: white;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 5px;
+}
+
+.auth-submit-btn:hover {
+  background: var(--dark-teal);
+  transform: translateY(-1px);
+}
+
+/* ================================================================
+   7. FOOTER, COPYRIGHT & AUTOFILL FIX
+   ================================================================ */
+.auth-footer-links {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.auth-footer-links p {
+  font-size: 0.8rem;
+  color: var(--slate-500);
+}
+
+.auth-footer-links a {
+  color: var(--primary-teal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-copyright {
+  margin-top: 25px;
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+/* Browser Autofill Fix (Keeps backgrounds consistent) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--slate-800);
+  -webkit-box-shadow: 0 0 0px 1000px #f8fafc inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ================================================================
+   8. MOBILE RESPONSIVENESS
+   ================================================================ */
+@media (max-width: 900px) {
+  .auth-master-container {
+    flex-direction: column;
+    height: auto !important;
+    max-width: 420px !important;
+  }
+
+  .auth-hero-side {
+    height: 150px;
+    flex: none;
+  }
+
+  .auth-form-side {
+    padding: 30px 20px;
+  }
+
+  body, html, #root {
+    overflow-y: auto; 
+  }
+}

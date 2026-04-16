@@ -1,0 +1,621 @@
+/* =========================================
+   1. MASTER LAYOUT & CONTAINERS
+   ========================================= */
+.rms-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f7fa;
+}
+
+.rms-main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Matches the 80px width of your Sidebar */
+  margin-left: 80px; 
+  min-width: 0; 
+  overflow-x: hidden;
+}
+
+/* =========================================
+   2. DASHBOARD CONTENT AREA
+   ========================================= */
+
+   /* Container for dropdown positioning */
+.dropdown-container {
+  position: relative;
+}
+
+/* The actual menu */
+.filter-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+.filter-dropdown div {
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.filter-dropdown div:hover {
+  background-color: #f1f5f9;
+  color: #0ea5e9;
+}
+
+/* Empty state message */
+.no-data-msg {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* --- DYNAMIC STATUS BADGES --- */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  min-width: 120px;
+}
+
+.status-badge.awaiting { 
+  background-color: #fff7ed; 
+  color: #9a3412; 
+}
+
+.status-badge.pending { 
+  background-color: #fefce8; 
+  color: #854d0e; 
+}
+
+/* =========================================
+   2. TOP NAVIGATION BAR
+   ========================================= */
+.rms-navbar {
+  background: #fff;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  padding: 8px 15px;
+  border-radius: 10px;
+  width: 450px;
+}
+
+.nav-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-left: 10px;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.filter-icon {
+  color: #64748b;
+  cursor: pointer;
+}
+
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-btn-plus {
+  background: #e0f2fe;
+  color: #0ea5e9;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-icon {
+  color: #64748b;
+  cursor: pointer;
+}
+
+.profile-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 20px;
+}
+
+.profile-chip img {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.user-name { display: block; font-weight: 700; font-size: 0.85rem; color: #1e293b; }
+.user-role { font-size: 0.75rem; color: #64748b; }
+
+/* =========================================
+   3. STATISTICS GRID & CARDS
+   ========================================= */
+.rms-content {
+  padding: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.stat-label { color: #64748b; font-size: 0.9rem; font-weight: 500; }
+.stat-value { font-size: 2.2rem; margin: 10px 0; font-weight: 800; color: #0f172a; }
+.stat-sub { color: #94a3b8; font-size: 0.8rem; }
+
+/* Donut Chart Styling */
+.chart-card { grid-column: span 1; padding: 20px; }
+.chart-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.chart-header span { font-weight: 700; color: #1e293b; }
+.view-all { color: #12C1A5; font-size: 0.8rem; text-decoration: none; font-weight: 600; }
+
+.chart-content { display: flex; align-items: center; gap: 20px; }
+.donut-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(#12C1A5 0% 40%, #E24444 40% 55%, #0ea5e9 55% 85%, #ffcc00 85% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-hole {
+  width: 75px;
+  height: 75px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-total { font-weight: 800; font-size: 1.1rem; color: #1e293b; }
+.donut-label { font-size: 0.55rem; color: #64748b; line-height: 1; }
+
+.chart-legend { flex: 1; font-size: 0.75rem; display: flex; flex-direction: column; gap: 8px; }
+.legend-item { display: flex; justify-content: space-between; border-left: 3px solid #12C1A5; padding-left: 8px; }
+.legend-cyan { border-color: #0ea5e9; }
+
+/* =========================================
+   4. DATA TABLE SECTION
+   ========================================= */
+.table-section { 
+  background: #fff; 
+  border-radius: 15px; 
+  padding: 25px; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+}
+
+.table-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.table-filters { display: flex; gap: 15px; }
+
+.filter-pill { 
+  background: #fff; 
+  border: 1px solid #e2e8f0; 
+  padding: 8px 16px; 
+  border-radius: 8px; 
+  display: flex; 
+  gap: 8px; 
+  align-items: center; 
+  font-size: 0.85rem; 
+  cursor: pointer; 
+  color: #475569; 
+  font-weight: 500; 
+}
+
+.btn-add-letter { 
+  background: #2563eb; 
+  color: #fff; 
+  border: none; 
+  padding: 12px 24px; 
+  border-radius: 10px; 
+  font-weight: 600; 
+  display: flex; 
+  gap: 10px; 
+  align-items: center; 
+  cursor: pointer; 
+  transition: background 0.2s; 
+}
+.btn-add-letter:hover { background: #1d4ed8; }
+
+.main-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.incoming-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 1100px; }
+.incoming-table th { background: #f8fafc; padding: 15px 12px; text-align: left; color: #475569; font-weight: 700; border-bottom: 2px solid #f1f5f9; }
+.incoming-table td { padding: 15px 12px; border-bottom: 1px solid #f1f5f9; color: #1e293b; }
+
+/* --- UNIVERSAL SENDER TAG --- */
+.sender-tag { 
+  padding: 4px 12px; 
+  border-radius: 6px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  background-color: #eff6ff; 
+  color: #2563eb; 
+}
+
+.row-actions { display: flex; gap: 15px; color: #94a3b8; cursor: pointer; }
+.row-actions svg:hover { color: #2563eb; }
+
+/* Date Dropdown Specific Styles */
+.date-dropdown {
+  padding: 15px !important;
+  min-width: 220px;
+}
+
+.date-input-row {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-input-row label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.date-input-row input {
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline-color: #0ea5e9;
+}
+
+.reset-date-btn {
+  width: 100%;
+  padding: 8px;
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 6px;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reset-date-btn:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.filter-pill.active-filter {
+  border-color: #0ea5e9;
+  background-color: #f0f9ff;
+  color: #0369a1;
+}
+
+.row-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  padding: 6px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: #f8fafc;
+  color: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.icon-btn.delete:hover {
+  background-color: #fef2f2;
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* Date Dropdown Helpers */
+.date-dropdown {
+  padding: 15px !important;
+  min-width: 220px;
+}
+.date-input-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.date-input-row label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+.date-input-row input {
+  padding: 6px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+.reset-date-btn {
+  width: 100%;
+  padding: 8px;
+  background: #f1f5f9;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* --- 1. MODAL OVERLAY --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4); 
+  backdrop-filter: blur(10px) saturate(160%); /* Enhanced blur */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Perfectly centered */
+  z-index: 9999;
+  padding: 24px; /* Safety breathing room for small screens */
+  animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- 2. THE CARD (Width & Height Optimization) --- */
+.modal-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 880px; /* Optimal reading width for 2-column forms */
+  max-height: 90vh; /* Prevents leaking off-screen */
+  border-radius: 24px;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.04),
+    0 40px 80px -20px rgba(15, 23, 42, 0.2);
+  display: flex;
+  flex-direction: column; /* Allows fixed header/footer and scrolling body */
+  position: relative;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  overflow: hidden; /* Important for the footer/header caps */
+}
+
+/* --- 3. THE HEADER --- */
+.modal-header {
+  padding: 32px 48px;
+  border-bottom: 1px solid #f1f5f9;
+  background: #fff;
+  z-index: 10;
+}
+
+.modal-header h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a; 
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #94a3b8;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px; /* Modern squircle icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: #fecaca;
+  transform: scale(1.05);
+}
+
+/* --- 4. THE SCROLLABLE FORM BODY --- */
+.modal-form {
+  padding: 40px 48px;
+  overflow-y: auto; /* Makes the middle section scrollable */
+  flex: 1; /* Occupies all available space */
+  scrollbar-width: thin;
+  scrollbar-color: #e2e8f0 transparent;
+}
+
+/* Custom Scrollbar for Chrome/Safari */
+.modal-form::-webkit-scrollbar { width: 6px; }
+.modal-form::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 56px; /* Wider gap for better column separation */
+  row-gap: 24px;
+}
+
+/* --- 5. INPUTS & GROUPS --- */
+.form-group {
+  display: flex;
+  flex-direction: column; /* Stack label over input for better readability on small/mid screens */
+  gap: 8px;
+}
+
+.form-group.full-width { grid-column: span 2; }
+
+.form-group label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #64748b; /* Professional Slate */
+}
+
+.form-group input, 
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  background: #fcfdfe; /* Ultra-bright clean input */
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  transition: all 0.2s;
+}
+
+.form-group input:focus {
+  background: #fff;
+  border-color: #2563eb; /* Strong Indigo focus */
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+  outline: none;
+}
+
+/* --- 6. UPLOAD BOX REFINEMENT --- */
+.upload-area {
+  border: 2px dashed #cbd5e1;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.upload-area:hover {
+  background: #f0f7ff;
+  border-color: #3b82f6;
+}
+
+.upload-label {
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* --- 7. STICKY FOOTER --- */
+.modal-footer {
+  padding: 24px 48px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #f8fafc; /* Subtle tint for the action area */
+  border-top: 1px solid #f1f5f9;
+}
+
+/* --- 1. PRIMARY ACTION BUTTON (Save Letter) --- */
+.btn-save {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Elegant Slate Gradient */
+  color: #ffffff;
+  padding: 14px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid #0f172a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2), 0 2px 4px -2px rgba(15, 23, 42, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-save:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); /* Shifts to Blue on Hover */
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.2), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+}
+
+.btn-save:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+}
+
+/* --- 2. SECONDARY BUTTON (Cancel) --- */
+.btn-cancel {
+  background: #ffffff;
+  color: #64748b;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #f8fafc;
+  color: #1e293b;
+  border-color: #cbd5e1;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
